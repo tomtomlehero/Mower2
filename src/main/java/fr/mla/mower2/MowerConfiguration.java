@@ -23,6 +23,13 @@ public class MowerConfiguration {
     }
 
 
-
-
+    @Override
+    public String toString() {
+        return "MowerConfiguration{" +
+                "startX=" + startX +
+                ", startY=" + startY +
+                ", startO=" + startO +
+                ", instructions=" + instructions +
+                '}';
+    }
 }
