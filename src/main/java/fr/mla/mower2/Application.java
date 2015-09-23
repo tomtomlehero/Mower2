@@ -1,6 +1,9 @@
 package fr.mla.mower2;
 
 import fr.mla.mower2.exception.ConfigurationException;
+import fr.mla.mower2.mower.Mower;
+import fr.mla.mower2.mower.behavior.DGABehavior;
+import fr.mla.mower2.mower.behavior.DGAMower;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -30,8 +33,10 @@ public class Application {
             System.exit(1);
         }
 
+        MowerClusterConfiguration config;
+
         try {
-            MowerClusterConfiguration config = configure(args[0]);
+            config = configure(args[0]);
             System.out.println(config);
             System.out.println("### Config Ok ###");
         } catch (ConfigurationException e) {
@@ -42,6 +47,12 @@ public class Application {
             e.printStackTrace();
             System.exit(1);
         }
+
+        // TODO : INJECT
+        Mower mower = new DGAMower();
+        mower.setMowerBehavior(new DGABehavior());
+
+        mower.performMow();
     }
 
     private static void usage() {
