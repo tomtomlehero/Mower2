@@ -4,6 +4,8 @@ import fr.mla.mower2.exception.ConfigurationException;
 import fr.mla.mower2.mower.Mower;
 import fr.mla.mower2.mower.behavior.DGABehavior;
 import fr.mla.mower2.mower.behavior.DGAMower;
+import fr.mla.mower2.util.Instruction;
+import fr.mla.mower2.util.OrientationEnum;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -16,17 +18,7 @@ public class Application {
 
     private static final String SEPARATOR = " ";
 
-
-    enum Orientation {
-        N, W, E, S
-    }
-
-    enum Instruction {
-        D, G, A
-    }
-
-
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
         if (args.length < 1) {
             usage();
@@ -100,7 +92,7 @@ public class Application {
 
                 int x1;
                 int y1;
-                Orientation o1;
+                OrientationEnum o1;
 
                 MowerConfiguration mowerConfig;
 
@@ -108,7 +100,7 @@ public class Application {
                 try {
                     x1 = Integer.valueOf(sCoord1[0]);
                     y1 = Integer.valueOf(sCoord1[1]);
-                    o1 = Orientation.valueOf(sCoord1[2]);
+                    o1 = OrientationEnum.valueOf(sCoord1[2]);
 
                     mowerConfig = new MowerConfiguration(x1, y1, o1);
 
