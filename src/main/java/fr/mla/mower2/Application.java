@@ -3,7 +3,7 @@ package fr.mla.mower2;
 import fr.mla.mower2.exception.ConfigurationException;
 import fr.mla.mower2.mower.Mower;
 import fr.mla.mower2.mower.behavior.DGABehavior;
-import fr.mla.mower2.mower.behavior.DGAMower;
+import fr.mla.mower2.mower.DGAMower;
 import fr.mla.mower2.util.Instruction;
 import fr.mla.mower2.util.OrientationEnum;
 
