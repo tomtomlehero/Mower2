@@ -1,10 +1,12 @@
 package fr.mla.mower2;
 
-import fr.mla.mower2.exception.ConfigurationException;
-import fr.mla.mower2.mower.Mower;
-import fr.mla.mower2.mower.behavior.DGABehavior;
-import fr.mla.mower2.mower.DGAMower;
-import fr.mla.mower2.util.Instruction;
+import fr.mla.mower2.model.configuration.MowerClusterConfiguration;
+import fr.mla.mower2.model.configuration.MowerConfiguration;
+import fr.mla.mower2.util.exception.ConfigurationException;
+import fr.mla.mower2.model.mower.Mower;
+import fr.mla.mower2.strategy.mow.DGABehavior;
+import fr.mla.mower2.model.mower.DGAMower;
+import fr.mla.mower2.util.InstructionEnum;
 import fr.mla.mower2.util.OrientationEnum;
 
 import java.io.BufferedReader;
@@ -14,7 +16,7 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Application {
+public class MowerApp {
 
     private static final String SEPARATOR = " ";
 
@@ -42,7 +44,7 @@ public class Application {
 
         // TODO : INJECT
         Mower mower = new DGAMower();
-        mower.setMowerBehavior(new DGABehavior());
+        mower.setMowBehavior(new DGABehavior());
 
         mower.performMow();
     }
@@ -125,7 +127,7 @@ public class Application {
                 Pattern dga2Pattern = Pattern.compile("[DGA]");
                 Matcher dga2Matcher = dga2Pattern.matcher(line);
                 while (dga2Matcher.find()) {
-                    mowerConfig.pushInstruction(Instruction.valueOf(dga2Matcher.group()));
+                    mowerConfig.pushInstruction(InstructionEnum.valueOf(dga2Matcher.group()));
                 }
 
 

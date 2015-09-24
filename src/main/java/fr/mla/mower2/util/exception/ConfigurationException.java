@@ -1,4 +1,4 @@
-package fr.mla.mower2.exception;
+package fr.mla.mower2.util.exception;
 
 
 

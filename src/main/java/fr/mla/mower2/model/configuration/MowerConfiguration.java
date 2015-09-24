@@ -1,7 +1,7 @@
-package fr.mla.mower2;
+package fr.mla.mower2.model.configuration;
 
 
-import fr.mla.mower2.util.Instruction;
+import fr.mla.mower2.util.InstructionEnum;
 import fr.mla.mower2.util.OrientationEnum;
 
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ public class MowerConfiguration {
     int startY;
     OrientationEnum startO;
 
-    List<Instruction> instructions = new ArrayList<>();
+    List<InstructionEnum> instructions = new ArrayList<>();
 
     public MowerConfiguration(int startX, int startY, OrientationEnum startO) {
         this.startX = startX;
@@ -21,7 +21,7 @@ public class MowerConfiguration {
         this.startO = startO;
     }
 
-    public void pushInstruction(Instruction instruction) {
+    public void pushInstruction(InstructionEnum instruction) {
         instructions.add(instruction);
     }
 

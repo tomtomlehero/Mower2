@@ -1,5 +1,5 @@
 package fr.mla.mower2.util;
 
-public enum Instruction {
+public enum InstructionEnum {
     D, G, A
 }

@@ -1,4 +1,4 @@
-package fr.mla.mower2;
+package fr.mla.mower2.model.configuration;
 
 
 import java.util.ArrayList;

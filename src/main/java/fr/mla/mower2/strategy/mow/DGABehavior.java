@@ -1,7 +1,7 @@
-package fr.mla.mower2.mower.behavior;
+package fr.mla.mower2.strategy.mow;
 
 
-public class DGABehavior implements IMowerBehavior {
+public class DGABehavior implements IMowBehavior {
 
 
     @Override
