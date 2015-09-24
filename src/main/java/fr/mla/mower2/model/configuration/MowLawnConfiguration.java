@@ -4,14 +4,14 @@ package fr.mla.mower2.model.configuration;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MowerClusterConfiguration {
+public class MowLawnConfiguration {
 
     private int maxX;
     private int maxY;
 
     List<MowerConfiguration> mowerConfigurations = new ArrayList<>();
 
-    public MowerClusterConfiguration(int maxX, int maxY) {
+    public MowLawnConfiguration(int maxX, int maxY) {
         this.maxX = maxX;
         this.maxY = maxY;
     }
@@ -22,7 +22,7 @@ public class MowerClusterConfiguration {
 
     @Override
     public String toString() {
-        return "MowerClusterConfiguration{" +
+        return "MowLawnConfiguration{" +
                 "maxX=" + maxX +
                 ", maxY=" + maxY +
                 ", mowerConfigurations=" + mowerConfigurations +

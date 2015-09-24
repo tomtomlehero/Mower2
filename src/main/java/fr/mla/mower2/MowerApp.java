@@ -1,6 +1,6 @@
 package fr.mla.mower2;
 
-import fr.mla.mower2.model.configuration.MowerClusterConfiguration;
+import fr.mla.mower2.model.configuration.MowLawnConfiguration;
 import fr.mla.mower2.model.configuration.MowerConfiguration;
 import fr.mla.mower2.util.exception.ConfigurationException;
 import fr.mla.mower2.model.mower.Mower;
@@ -27,7 +27,7 @@ public class MowerApp {
             System.exit(1);
         }
 
-        MowerClusterConfiguration config;
+        MowLawnConfiguration config;
 
         try {
             config = configure(args[0]);
@@ -56,9 +56,9 @@ public class MowerApp {
 
 
 
-    private static MowerClusterConfiguration configure(String path) throws ConfigurationException, IOException {
+    private static MowLawnConfiguration configure(String path) throws ConfigurationException, IOException {
 
-        MowerClusterConfiguration mowerClusterConfiguration;
+        MowLawnConfiguration mowLawnConfiguration;
 
         try (BufferedReader in = new BufferedReader(new FileReader(path))) {
 
@@ -77,7 +77,7 @@ public class MowerApp {
                 maxX = Integer.valueOf(sCoord[0]);
                 maxY = Integer.valueOf(sCoord[1]);
 
-                mowerClusterConfiguration = new MowerClusterConfiguration(maxX, maxY);
+                mowLawnConfiguration = new MowLawnConfiguration(maxX, maxY);
 
             } catch (NumberFormatException | IndexOutOfBoundsException e) {
                 throw new ConfigurationException(
@@ -131,13 +131,13 @@ public class MowerApp {
                 }
 
 
-                mowerClusterConfiguration.addMowerConfiguration(mowerConfig);
+                mowLawnConfiguration.addMowerConfiguration(mowerConfig);
 
 
             }
 
 
-            return mowerClusterConfiguration;
+            return mowLawnConfiguration;
 
 
 
