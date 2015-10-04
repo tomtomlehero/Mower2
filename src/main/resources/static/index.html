@@ -16,14 +16,14 @@
         <textarea class="form-control" rows="5" id="mower-instructions" ng-model="mowerInstructions" ng-change="submitInstructions(mowerInstructions)"></textarea>
     </div>
 
-    <div class="alert alert-danger" ng-hide="true">
-        <strong>Attention!</strong> Les instructions fournies sont invalides
+    <div class="alert alert-danger" ng-hide="!mowerResponse.errorMessage">
+        <strong>Attention!</strong> {{mowerResponse.errorMessage}}
     </div>
 
     <div>
         <label for="mower-positions">Mower final positions:</label>
         <div class="well" id="mower-positions">
-            {{mowerResponse}}
+            {{mowerResponse.response}}
         </div>
     </div>
 

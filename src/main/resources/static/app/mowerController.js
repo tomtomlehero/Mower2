@@ -5,8 +5,8 @@ var mowerController = function ($scope, Instructions) {
      $scope.submitInstructions = function(instructions) {
        new Instructions({
          instructions: instructions
-       }).$submit(function(instructions) {
-            $scope.mowerResponse = instructions.response;
+       }).$submit(function(response) {
+            $scope.mowerResponse = response;
        });
      };
 
