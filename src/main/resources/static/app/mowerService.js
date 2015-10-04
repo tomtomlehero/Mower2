@@ -7,6 +7,4 @@ var InstructionsFactory = function($resource) {
     });
 };
 
-InstructionsFactory.$inject = ['$resource'];
-
 angular.module("mowerApp").factory("Instructions", InstructionsFactory);
