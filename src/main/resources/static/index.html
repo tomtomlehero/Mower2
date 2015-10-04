@@ -5,29 +5,39 @@
     <title>Mower 2</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
 </head>
-<body>
-<div class="container">
+<body ng-app="mowerApp">
+<div class="container" ng-controller="mowerController">
     <div class="page-header">
         <h1>Mower 2</h1>
     </div>
 
-
     <div class="form-group">
         <label for="mower-instructions">Mower instructions:</label>
-        <textarea class="form-control" rows="5" id="mower-instructions"></textarea>
+        <textarea class="form-control" rows="5" id="mower-instructions" ng-model="mowerInstructions" ng-change="submitInstructions(mowerInstructions)"></textarea>
     </div>
 
-    <div class="alert alert-danger">
+    <div class="alert alert-danger" ng-hide="true">
         <strong>Attention!</strong> Les instructions fournies sont invalides
     </div>
 
     <div>
         <label for="mower-positions">Mower final positions:</label>
         <div class="well" id="mower-positions">
-            1 3 N<br/>
-            5 1 E
+            {{mowerResponse}}
         </div>
     </div>
+
+
+    <div>
+        <button type="button" class="btn btn-primary" ng-hide="true" ng-click="submitInstructions(mowerInstructions)">Go</button>
+    </div>
+
+
 </div>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+<script type="text/javascript" src="https://code.angularjs.org/1.4.6/angular-resource.min.js"></script>
+<script type="text/javascript" src="./app/mowerApp.js"></script>
+<script type="text/javascript" src="./app/mowerController.js"></script>
+<script type="text/javascript" src="./app/mowerService.js"></script>
 </body>
 </html>
