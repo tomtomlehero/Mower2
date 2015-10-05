@@ -1,7 +1,7 @@
-package fr.mla.mower2.controller;
+package fr.mla.mower2.web.controller;
 
-import fr.mla.mower2.controller.dto.MowerInstructionsDto;
-import fr.mla.mower2.controller.dto.MowerResponseDto;
+import fr.mla.mower2.web.controller.dto.MowerInstructionsDto;
+import fr.mla.mower2.web.controller.dto.MowerResponseDto;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,8 +17,8 @@ public class SubmitMowerInstructionsController {
 
         MowerResponseDto response = new MowerResponseDto();
 
-        if (instructions.getInstructions().startsWith("GONTRAN")) {
-            response.setErrorMessage("Hey instructions can't start with GONTRAN !!!!");
+        if (instructions.getInstructions().toUpperCase().startsWith("ROCK")) {
+            response.setErrorMessage("Hey instructions can't start with 'ROCK' !!!!");
         } else {
             response.setResponse("You said : " + instructions.getInstructions() + " !!!!!!! BRAVO !!!");
         }

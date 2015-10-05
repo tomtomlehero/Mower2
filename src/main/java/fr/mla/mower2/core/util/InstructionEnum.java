@@ -1,4 +1,4 @@
-package fr.mla.mower2.util;
+package fr.mla.mower2.core.util;
 
 public enum InstructionEnum {
     D, G, A

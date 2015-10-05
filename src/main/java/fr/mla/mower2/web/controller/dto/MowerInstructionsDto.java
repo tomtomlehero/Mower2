@@ -1,4 +1,4 @@
-package fr.mla.mower2.controller.dto;
+package fr.mla.mower2.web.controller.dto;
 
 
 import java.io.Serializable;

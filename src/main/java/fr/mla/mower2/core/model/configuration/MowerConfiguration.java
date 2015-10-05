@@ -1,8 +1,8 @@
-package fr.mla.mower2.model.configuration;
+package fr.mla.mower2.core.model.configuration;
 
 
-import fr.mla.mower2.util.InstructionEnum;
-import fr.mla.mower2.util.OrientationEnum;
+import fr.mla.mower2.core.util.InstructionEnum;
+import fr.mla.mower2.core.util.OrientationEnum;
 
 import java.util.ArrayList;
 import java.util.List;
