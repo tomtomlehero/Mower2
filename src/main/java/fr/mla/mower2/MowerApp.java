@@ -1,6 +1,6 @@
 package fr.mla.mower2;
 
-import fr.mla.mower2.core.model.configuration.MowLawnConfiguration;
+import fr.mla.mower2.core.model.configuration.MowItNowConfiguration;
 import fr.mla.mower2.core.model.configuration.MowerConfiguration;
 import fr.mla.mower2.core.util.exception.ConfigurationException;
 import fr.mla.mower2.core.model.mower.Mower;
@@ -27,7 +27,7 @@ public class MowerApp {
             System.exit(1);
         }
 
-        MowLawnConfiguration config;
+        MowItNowConfiguration config;
 
         try {
             config = configure(args[0]);
@@ -56,9 +56,9 @@ public class MowerApp {
 
 
 
-    private static MowLawnConfiguration configure(String path) throws ConfigurationException, IOException {
+    private static MowItNowConfiguration configure(String path) throws ConfigurationException, IOException {
 
-        MowLawnConfiguration mowLawnConfiguration;
+        MowItNowConfiguration mowItNowConfiguration;
 
         try (BufferedReader in = new BufferedReader(new FileReader(path))) {
 
@@ -77,7 +77,7 @@ public class MowerApp {
                 maxX = Integer.valueOf(sCoord[0]);
                 maxY = Integer.valueOf(sCoord[1]);
 
-                mowLawnConfiguration = new MowLawnConfiguration(maxX, maxY);
+                mowItNowConfiguration = new MowItNowConfiguration(maxX, maxY);
 
             } catch (NumberFormatException | IndexOutOfBoundsException e) {
                 throw new ConfigurationException(
@@ -86,11 +86,11 @@ public class MowerApp {
 
             // Lignes d'instructions tondeuses
 
-            int mowerCount = 0;
+            int mowerNum = 0;
 
             while ((line = in.readLine()) != null) {
 
-                mowerCount++;
+                mowerNum++;
 
                 int x1;
                 int y1;
@@ -104,16 +104,16 @@ public class MowerApp {
                     y1 = Integer.valueOf(sCoord1[1]);
                     o1 = OrientationEnum.valueOf(sCoord1[2]);
 
-                    mowerConfig = new MowerConfiguration(x1, y1, o1);
+                    mowerConfig = new MowerConfiguration(mowerNum, x1, y1, o1);
 
                 } catch (IndexOutOfBoundsException | IllegalArgumentException e) {
                     throw new ConfigurationException(String.format(
-                            "Erreur pendant la configuration : [tondeuse #%d/ligne #1] doit contenir deux entiers et une orientation séparés par un espace", mowerCount));
+                            "Erreur pendant la configuration : [tondeuse #%d/ligne #1] doit contenir deux entiers et une orientation séparés par un espace", mowerNum));
                 }
 
 
                 if ((line = in.readLine()) == null) {
-                    throw new ConfigurationException(String.format("Erreur pendant la configuration : [tondeuse #%d] ligne d'instructions absente", mowerCount));
+                    throw new ConfigurationException(String.format("Erreur pendant la configuration : [tondeuse #%d] ligne d'instructions absente", mowerNum));
                 }
 
 
@@ -121,7 +121,7 @@ public class MowerApp {
                 Matcher dgaMatcher = dgaPattern.matcher(line);
                 if (!dgaMatcher.matches()) {
                     throw new ConfigurationException(String.format(
-                            "Erreur pendant la configuration : [tondeuse #%d/ligne #2] doit contenir une liste d'instruction pour la tondeuse parmi 'D', 'G' et 'A'", mowerCount));
+                            "Erreur pendant la configuration : [tondeuse #%d/ligne #2] doit contenir une liste d'instruction pour la tondeuse parmi 'D', 'G' et 'A'", mowerNum));
                 }
 
                 Pattern dga2Pattern = Pattern.compile("[DGA]");
@@ -131,13 +131,13 @@ public class MowerApp {
                 }
 
 
-                mowLawnConfiguration.addMowerConfiguration(mowerConfig);
+                mowItNowConfiguration.addMowerConfiguration(mowerConfig);
 
 
             }
 
 
-            return mowLawnConfiguration;
+            return mowItNowConfiguration;
 
 
 

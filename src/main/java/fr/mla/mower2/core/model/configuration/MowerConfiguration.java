@@ -9,13 +9,16 @@ import java.util.List;
 
 public class MowerConfiguration {
 
-    int startX;
-    int startY;
-    OrientationEnum startO;
+    private int mowerNum;
+
+    private int startX;
+    private int startY;
+    private OrientationEnum startO;
 
     List<InstructionEnum> instructions = new ArrayList<>();
 
-    public MowerConfiguration(int startX, int startY, OrientationEnum startO) {
+    public MowerConfiguration(int mowerNum, int startX, int startY, OrientationEnum startO) {
+        this.mowerNum = mowerNum;
         this.startX = startX;
         this.startY = startY;
         this.startO = startO;
@@ -29,10 +32,12 @@ public class MowerConfiguration {
     @Override
     public String toString() {
         return "MowerConfiguration{" +
-                "startX=" + startX +
+                "mowerNum=" + mowerNum +
+                ", startX=" + startX +
                 ", startY=" + startY +
                 ", startO=" + startO +
                 ", instructions=" + instructions +
                 '}';
     }
+
 }

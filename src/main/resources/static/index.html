@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Mower 2</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
-    <script type="text/javascript" src="https://code.angularjs.org/1.4.6/angular-resource.min.js"></script>
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>-->
+    <!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>-->
+    <!--<script type="text/javascript" src="https://code.angularjs.org/1.4.6/angular-resource.min.js"></script>-->
+    <link rel="stylesheet" href="./vendor/bootstrap.min.css"/>
+    <script type="text/javascript" src="./vendor/angular.min.js"></script>
+    <script type="text/javascript" src="./vendor/angular-resource.min.js"></script>
+
     <script type="text/javascript" src="./app/mowerApp.js"></script>
     <script type="text/javascript" src="./app/mowerController.js"></script>
     <script type="text/javascript" src="./app/mowerService.js"></script>
@@ -22,7 +26,7 @@
     </div>
 
     <div class="alert alert-danger" ng-hide="!mowerResponse.errorMessage">
-        <strong>Attention!</strong> {{mowerResponse.errorMessage}}
+        <strong>Warning</strong> {{mowerResponse.errorMessage}}
     </div>
 
     <div>
@@ -30,11 +34,6 @@
         <div class="well" id="mower-positions">
             {{mowerResponse.response}}
         </div>
-    </div>
-
-
-    <div>
-        <button type="button" class="btn btn-primary" ng-hide="true" ng-click="submitInstructions(mowerInstructions)">Go</button>
     </div>
 
 </div>
