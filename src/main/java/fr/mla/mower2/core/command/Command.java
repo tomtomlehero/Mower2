@@ -1,7 +1,16 @@
 package fr.mla.mower2.core.command;
 
 
-public interface Command {
+import fr.mla.mower2.core.model.mower.Mower;
 
-    void execute();
+public abstract class Command {
+
+    protected Mower mower;
+
+    abstract public void execute();
+
+    public void setMower(Mower mower) {
+        this.mower = mower;
+    }
+
 }

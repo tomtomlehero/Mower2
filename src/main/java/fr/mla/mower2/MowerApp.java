@@ -42,11 +42,6 @@ public class MowerApp {
             System.exit(1);
         }
 
-        // TODO : INJECT
-        Mower mower = new DGAMower();
-        mower.setMowStrategy(new DGAMowerStrategy(mower));
-
-//        mower.performMow();
     }
 
     private static void usage() {

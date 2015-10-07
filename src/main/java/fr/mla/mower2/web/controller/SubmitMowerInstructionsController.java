@@ -17,13 +17,18 @@ public class SubmitMowerInstructionsController {
     @RequestMapping(method = RequestMethod.POST)
     public MowerResponseDto submitMowerInstructions(@RequestBody MowerInstructionsDto instructions) {
 
+        System.out.println("----------- Instructions received -----------------");
+        System.out.println(instructions.getInstructions());
+
         MowerResponseDto response = new MowerResponseDto();
         try {
-            String mowerResponse = mowerBusiness.processInstructions(instructions.getInstructions());
+            String mowerResponse = mowerBusiness.mowItNow(instructions.getInstructions());
             response.setResponse(mowerResponse);
         } catch (ConfigurationException e) {
             response.setErrorMessage(e.getMessage());
         }
+
+        System.out.println("----------------------------------------------------");
 
         return response;
     }

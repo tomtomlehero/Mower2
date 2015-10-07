@@ -69,7 +69,7 @@ public class DGAMowerStrategy implements MowStrategy {
                 mower.setY(Math.max(y - 1, 0));
                 break;
             case W:
-                mower.setX(Math.min(x - 1, 0));
+                mower.setX(Math.max(x - 1, 0));
                 break;
         }
 

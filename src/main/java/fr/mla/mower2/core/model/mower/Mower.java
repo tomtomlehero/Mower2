@@ -5,16 +5,23 @@ import fr.mla.mower2.core.util.OrientationEnum;
 
 public abstract class Mower {
 
-    private int x;
-    private int y;
-
     private int xMax;
     private int yMax;
+
+    private int x;
+    private int y;
 
     private OrientationEnum orientation;
 
     private MowStrategy mowStrategy;
 
+    public Mower(int xMax, int yMax, int x, int y, OrientationEnum orientation) {
+        this.xMax = xMax;
+        this.yMax = yMax;
+        this.x = x;
+        this.y = y;
+        this.orientation = orientation;
+    }
 
     public int getX() {
         return x;
@@ -59,7 +66,6 @@ public abstract class Mower {
 
     public void performTurnLeft() {
         mowStrategy.turnLeft();
-
     }
 
     public void performOneStepForward() {

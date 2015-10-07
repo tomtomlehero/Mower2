@@ -28,6 +28,25 @@ public class MowerConfiguration {
         instructions.add(instruction);
     }
 
+    public int getStartX() {
+        return startX;
+    }
+
+    public int getStartY() {
+        return startY;
+    }
+
+    public OrientationEnum getStartO() {
+        return startO;
+    }
+
+    public List<InstructionEnum> getInstructions() {
+        return instructions;
+    }
+
+    public int getMowerNum() {
+        return mowerNum;
+    }
 
     @Override
     public String toString() {
