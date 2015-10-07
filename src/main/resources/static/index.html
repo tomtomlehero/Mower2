@@ -32,7 +32,9 @@
     <div>
         <label for="mower-positions">Mower final positions:</label>
         <div class="well" id="mower-positions">
-            {{mowerResponse.response}}
+            <div ng-repeat="line in mowerResponse.response">
+                <span>{{line.response}}</span>
+            </div>
         </div>
     </div>
 

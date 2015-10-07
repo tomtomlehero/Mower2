@@ -2,8 +2,8 @@ package fr.mla.mower2.web.controller;
 
 import fr.mla.mower2.core.business.MowerBusiness;
 import fr.mla.mower2.core.util.exception.ConfigurationException;
-import fr.mla.mower2.web.controller.dto.MowerInstructionsDto;
-import fr.mla.mower2.web.controller.dto.MowerResponseDto;
+import fr.mla.mower2.web.controller.dto.MowItNowInstructionsDto;
+import fr.mla.mower2.web.controller.dto.MowItNowResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,15 +17,15 @@ public class SubmitMowerInstructionsController {
     private MowerBusiness mowerBusiness;
 
     @RequestMapping(method = RequestMethod.POST)
-    public MowerResponseDto submitMowerInstructions(@RequestBody MowerInstructionsDto instructions) {
+    public MowItNowResponseDto submitMowerInstructions(@RequestBody MowItNowInstructionsDto instructions) {
 
         System.out.println("----------- Instructions received -----------------");
-        System.out.println(instructions.getInstructions());
+//        System.out.println(instructions.getInstructions());
 
-        MowerResponseDto response = new MowerResponseDto();
+        MowItNowResponseDto response = new MowItNowResponseDto();
         try {
-            List<String> mowerResponse = mowerBusiness.mowItNow(instructions.getInstructions());
-            response.setResponse(mowerResponse);
+            List<String> mowItResponse = mowerBusiness.mowItNow(instructions.getInstructions());
+            response.serialize(mowItResponse);
         } catch (ConfigurationException e) {
             response.setErrorMessage(e.getMessage());
         }
