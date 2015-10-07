@@ -11,6 +11,9 @@ import fr.mla.mower2.core.model.mower.impl.DGAMower;
 import fr.mla.mower2.core.util.InstructionEnum;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class MowItNowService {
 
@@ -18,9 +21,9 @@ public class MowItNowService {
     private Command commandG = new GCommand();
     private Command commandA = new ACommand();
 
-    public String mowIt(MowItNowConfiguration mowItNowConfiguration) {
+    public List<String> mowIt(MowItNowConfiguration mowItNowConfiguration) {
 
-        String finalPositions = "";
+        List<String> response = new ArrayList<>();
 
         for (MowerConfiguration mowerConfiguration : mowItNowConfiguration.getMowerConfigurations()) {
 
@@ -35,15 +38,16 @@ public class MowItNowService {
             commandsDriveMower(mower);
 
             mowerMow(mowerConfiguration);
-            finalPositions += " $$$$$ MOWER #"
-                     + mowerConfiguration.getMowerNum() + " finished ["
-                     + mower.getX() + " "
-                     + mower.getY() + " "
-                     + mower.getOrientation().name() + "]";
+
+            String finalPosition = mower.getX() + " "
+                    + mower.getY() + " "
+                    + mower.getOrientation().name();
+
+            response.add(finalPosition);
 
         }
 
-        return finalPositions;
+        return response;
 
     }
 

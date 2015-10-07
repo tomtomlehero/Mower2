@@ -7,6 +7,8 @@ import fr.mla.mower2.web.controller.dto.MowerResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/submitInstructions")
 public class SubmitMowerInstructionsController {
@@ -22,7 +24,7 @@ public class SubmitMowerInstructionsController {
 
         MowerResponseDto response = new MowerResponseDto();
         try {
-            String mowerResponse = mowerBusiness.mowItNow(instructions.getInstructions());
+            List<String> mowerResponse = mowerBusiness.mowItNow(instructions.getInstructions());
             response.setResponse(mowerResponse);
         } catch (ConfigurationException e) {
             response.setErrorMessage(e.getMessage());

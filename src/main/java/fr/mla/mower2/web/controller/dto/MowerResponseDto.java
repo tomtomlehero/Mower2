@@ -2,20 +2,21 @@ package fr.mla.mower2.web.controller.dto;
 
 
 import java.io.Serializable;
+import java.util.List;
 
 public class MowerResponseDto implements Serializable {
 
-    private String response;
+    private List<String> response;
     private String errorMessage;
 
     public MowerResponseDto() {
     }
 
-    public String getResponse() {
+    public List<String> getResponse() {
         return response;
     }
 
-    public void setResponse(String response) {
+    public void setResponse(List<String> response) {
         this.response = response;
     }
 
