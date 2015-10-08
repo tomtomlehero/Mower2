@@ -21,7 +21,7 @@
     </div>
 
     <div class="form-group">
-        <label for="mower-instructions">Mower instructions:</label>
+        <label for="mower-instructions">Mowers instructions:</label>
         <textarea class="form-control" rows="5" id="mower-instructions" ng-model="mowerInstructions" ng-change="submitInstructions(mowerInstructions)"></textarea>
     </div>
 
@@ -30,7 +30,7 @@
     </div>
 
     <div>
-        <label for="mower-positions">Mower final positions:</label>
+        <label for="mower-positions">Mowers final positions:</label>
         <div class="well" id="mower-positions">
             <div ng-repeat="line in mowerResponse.response">
                 <span>{{line.response}}</span>
