@@ -14,8 +14,6 @@ import java.util.regex.Pattern;
 @Service
 public class ConfigurationService {
 
-    private static final String LINE_SEPARATOR = "\n";
-
     // 1 ore more digits followed by a space followed by one ore more digits followed by any (unused) whitespaces
     private static Pattern firstLinePattern = Pattern.compile("^\\d+ \\d+\\s*$");
     // 1 ore more digits followed by a space followed by one ore more digits followed by N|E|W|S followed by any (unused) whitespaces
@@ -28,15 +26,10 @@ public class ConfigurationService {
     private static Pattern dgaFinderPattern = Pattern.compile("[DGA]");
 
 
-    public MowItNowConfiguration configure(String instructions) throws ConfigurationException {
-        String instrucionLines[] = extractInstructions(instructions);
-        return processInstructions(instrucionLines);
+    public MowItNowConfiguration configure(String[] instructions) throws ConfigurationException {
+        return processInstructions(instructions);
     }
 
-
-    private String[] extractInstructions(String instructions) {
-        return instructions.split(LINE_SEPARATOR);
-    }
 
 
     private MowItNowConfiguration processInstructions(String[] lines) throws ConfigurationException {

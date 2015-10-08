@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface MowerBusiness {
 
-    List<String> mowItNow(String instructions) throws ConfigurationException;
+    List<String> mowItNow(String[] instructions) throws ConfigurationException;
 }

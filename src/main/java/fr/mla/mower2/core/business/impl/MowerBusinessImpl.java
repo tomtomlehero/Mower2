@@ -20,7 +20,7 @@ public class MowerBusinessImpl implements MowerBusiness {
     MowItNowService mowItNowService;
 
     @Override
-    public List<String> mowItNow(String instructions) throws ConfigurationException {
+    public List<String> mowItNow(String[] instructions) throws ConfigurationException {
 
         MowItNowConfiguration configuration = configurationService.configure(instructions);
         return mowItNowService.mowIt(configuration);

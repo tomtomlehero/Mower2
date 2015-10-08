@@ -13,6 +13,9 @@ import java.util.List;
 @RequestMapping("/submitInstructions")
 public class SubmitMowerInstructionsController {
 
+    private static final String LINE_SEPARATOR = "\n";
+
+
     @Autowired
     private MowerBusiness mowerBusiness;
 
@@ -21,7 +24,7 @@ public class SubmitMowerInstructionsController {
 
         MowItNowResponseDto response = new MowItNowResponseDto();
         try {
-            List<String> mowItResponse = mowerBusiness.mowItNow(instructions.getInstructions());
+            List<String> mowItResponse = mowerBusiness.mowItNow(instructions.getInstructions().split((LINE_SEPARATOR)));
             response.serialize(mowItResponse);
         } catch (ConfigurationException e) {
             response.setErrorMessage(e.getMessage());

@@ -37,7 +37,7 @@ public class MowItNowService {
 
             commandsDriveMower(mower);
 
-            mowerMow(mowerConfiguration);
+            mow(mowerConfiguration);
 
             String finalPosition = mower.getX() + " "
                     + mower.getY() + " "
@@ -61,7 +61,7 @@ public class MowItNowService {
     }
 
 
-    private void mowerMow(MowerConfiguration mowerConfiguration) {
+    private void mow(MowerConfiguration mowerConfiguration) {
 
         for (InstructionEnum instruction : mowerConfiguration.getInstructions()) {
 
