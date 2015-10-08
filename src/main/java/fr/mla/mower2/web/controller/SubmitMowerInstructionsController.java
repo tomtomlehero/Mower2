@@ -19,9 +19,6 @@ public class SubmitMowerInstructionsController {
     @RequestMapping(method = RequestMethod.POST)
     public MowItNowResponseDto submitMowerInstructions(@RequestBody MowItNowInstructionsDto instructions) {
 
-        System.out.println("----------- Instructions received -----------------");
-//        System.out.println(instructions.getInstructions());
-
         MowItNowResponseDto response = new MowItNowResponseDto();
         try {
             List<String> mowItResponse = mowerBusiness.mowItNow(instructions.getInstructions());
@@ -29,8 +26,6 @@ public class SubmitMowerInstructionsController {
         } catch (ConfigurationException e) {
             response.setErrorMessage(e.getMessage());
         }
-
-        System.out.println("----------------------------------------------------");
 
         return response;
     }

@@ -46,7 +46,7 @@ public class ConfigurationService {
         Matcher firstLineMatcher = firstLinePattern.matcher(firstLine);
 
         if (!firstLineMatcher.matches()) {
-            throw new ConfigurationException("1st line must contain 2 integers separated by a space");
+            throw new ConfigurationException("1st line must contain 2 positive integers separated by a space");
         }
 
         Matcher digitFinderMatcher = digitFinderPattern.matcher(firstLine);
@@ -70,7 +70,7 @@ public class ConfigurationService {
             Matcher mowerInitialisationMatcher = mowerInitializationPattern.matcher(mowerInitialisationLine);
 
             if (!mowerInitialisationMatcher.matches()) {
-                throw new ConfigurationException(String.format("Mower #%d : Initialisation line must contain 2 integers ans an orientaion (NEWS) separated by a space", mowerNum));
+                throw new ConfigurationException(String.format("Mower #%d : Initialisation line must contain 2 positive integers ans an orientaion (NEWS) separated by a space", mowerNum));
             }
 
             // Parsing
@@ -80,6 +80,11 @@ public class ConfigurationService {
             int startX = Integer.valueOf(digitMatcher.group());
             digitMatcher.find();
             int startY = Integer.valueOf(digitMatcher.group());
+
+            if ((startX > maxX) || (startY > maxY)) {
+                throw new ConfigurationException(String.format("Mower #%d : Oooops!! Mower can't start from outside of the lawn", mowerNum));
+            }
+
 
             Matcher orientationMatcher = orientationFinderPattern.matcher(mowerInitialisationLine);
 
