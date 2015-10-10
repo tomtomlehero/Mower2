@@ -1,8 +1,11 @@
 package fr.mla.mower2;
 
 import fr.mla.mower2.core.business.MowerBusiness;
-import fr.mla.mower2.core.business.impl.MowerBusinessImpl;
 import fr.mla.mower2.core.util.exception.ConfigurationException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -11,10 +14,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class MowerApp {
 
-
-    private MowerBusiness mowerBusiness = new MowerBusinessImpl();
+    @Autowired
+    private MowerBusiness mowerBusiness;
 
 
     public static void main(String[] args) {
@@ -24,27 +28,28 @@ public class MowerApp {
             System.exit(1);
         }
 
-        String filePath = args[0];
+        ApplicationContext context = new ClassPathXmlApplicationContext("META-INF/spring-config.xml");
+        MowerApp app = context.getBean(MowerApp.class);
 
-        MowerApp mowerApp = new MowerApp();
+        app.start(args[0]);
+    }
+
+
+    public void start(String filePath) {
+
+
         try {
-            mowerApp.mowItNow(filePath).forEach(System.out::println);
+            mowItNow(filePath).forEach(System.out::println);
         } catch (ConfigurationException e) {
             System.out.println(e.getMessage());
             System.exit(1);
         } catch (FileNotFoundException e) {
             System.out.println(String.format("Erreur : le fichier %s n'existe pas", filePath));
         } catch (IOException e) {
-            System.out.println("Erreur I/O");
+            System.out.println(String.format("Erreur I/O: %s", e.getMessage()));
             e.printStackTrace();
             System.exit(1);
         }
-    }
-
-
-    private static void usage() {
-        System.out.println("USAGE:");
-        System.out.println("\tMower2.sh <configurationFile>");
     }
 
 
@@ -77,4 +82,15 @@ public class MowerApp {
 
 
     }
+
+
+
+    private static void usage() {
+        System.out.println("USAGE:");
+        System.out.println("\tMower2.sh <configurationFile>");
+    }
+
+
+
+
 }
