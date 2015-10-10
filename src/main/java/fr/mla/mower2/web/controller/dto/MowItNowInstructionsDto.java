@@ -18,4 +18,8 @@ public class MowItNowInstructionsDto implements Serializable {
         this.instructions = instructions;
     }
 
+    @Override
+    public String toString() {
+        return instructions;
+    }
 }

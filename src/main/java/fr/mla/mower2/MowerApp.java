@@ -2,6 +2,8 @@ package fr.mla.mower2;
 
 import fr.mla.mower2.core.business.MowerBusiness;
 import fr.mla.mower2.core.util.exception.ConfigurationException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -16,6 +18,8 @@ import java.util.List;
 
 @Component
 public class MowerApp {
+
+    private static Logger log = LoggerFactory.getLogger(MowerApp.class);
 
     @Autowired
     private MowerBusiness mowerBusiness;
@@ -37,18 +41,14 @@ public class MowerApp {
 
     public void start(String filePath) {
 
-
         try {
             mowItNow(filePath).forEach(System.out::println);
         } catch (ConfigurationException e) {
-            System.out.println(e.getMessage());
-            System.exit(1);
+            log.error(e.getMessage());
         } catch (FileNotFoundException e) {
-            System.out.println(String.format("Erreur : le fichier %s n'existe pas", filePath));
+            log.error("Erreur : le fichier {} n'existe pas", filePath);
         } catch (IOException e) {
-            System.out.println(String.format("Erreur I/O: %s", e.getMessage()));
-            e.printStackTrace();
-            System.exit(1);
+            log.error(String.format("Erreur I/O: %s", e.getMessage()), e);
         }
     }
 
@@ -65,7 +65,6 @@ public class MowerApp {
             String line;
             List<String> lines = new ArrayList<>();
 
-
             while ((line = in.readLine()) != null) {
                 lines.add(line);
             }
@@ -79,18 +78,12 @@ public class MowerApp {
 
             return result;
         }
-
-
     }
-
 
 
     private static void usage() {
-        System.out.println("USAGE:");
-        System.out.println("\tMower2.sh <configurationFile>");
+        log.warn("USAGE:");
+        log.warn("\tMower2.sh <configurationFile>");
     }
-
-
-
 
 }

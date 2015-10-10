@@ -4,6 +4,8 @@ import fr.mla.mower2.core.business.MowerBusiness;
 import fr.mla.mower2.core.util.exception.ConfigurationException;
 import fr.mla.mower2.web.controller.dto.MowItNowInstructionsDto;
 import fr.mla.mower2.web.controller.dto.MowItNowResponseDto;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,7 +13,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/submitInstructions")
-public class SubmitMowerInstructionsController {
+public class MowerWebController {
+
+    private static Logger log = LoggerFactory.getLogger(MowerWebController.class);
 
     private static final String LINE_SEPARATOR = "\n";
 
@@ -22,6 +26,8 @@ public class SubmitMowerInstructionsController {
     @RequestMapping(method = RequestMethod.POST)
     public MowItNowResponseDto submitMowerInstructions(@RequestBody MowItNowInstructionsDto instructions) {
 
+        log.trace("Request: \n{}", instructions);
+
         MowItNowResponseDto response = new MowItNowResponseDto();
         try {
             List<String> mowItResponse = mowerBusiness.mowItNow(instructions.getInstructions().split((LINE_SEPARATOR)));
@@ -29,6 +35,8 @@ public class SubmitMowerInstructionsController {
         } catch (ConfigurationException e) {
             response.setErrorMessage(e.getMessage());
         }
+
+        log.trace("Response: \n{}", response);
 
         return response;
     }

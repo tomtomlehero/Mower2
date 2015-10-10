@@ -36,6 +36,12 @@ public class MowItNowResponseDto implements Serializable {
     public void setErrorMessage(String errorMessage) {
         this.errorMessage = errorMessage;
     }
+
+    @Override
+    public String toString() {
+        return (errorMessage != null ? errorMessage : response.toString());
+
+    }
 }
 
 
@@ -65,5 +71,10 @@ class MowerResponseDto implements Serializable {
 
     public void setResponse(String response) {
         this.response = response;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%d - %s", id, response);
     }
 }
