@@ -1,4 +1,4 @@
-package fr.mla.mower2.core.business.service;
+package fr.mla.mower2.business.service;
 
 import fr.mla.mower2.core.command.Command;
 import fr.mla.mower2.core.command.imp.ACommand;

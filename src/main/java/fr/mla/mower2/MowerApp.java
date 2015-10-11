@@ -1,6 +1,6 @@
 package fr.mla.mower2;
 
-import fr.mla.mower2.core.business.MowerBusiness;
+import fr.mla.mower2.business.MowerBusiness;
 import fr.mla.mower2.core.util.exception.ConfigurationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

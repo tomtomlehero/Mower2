@@ -1,4 +1,4 @@
-package fr.mla.mower2.core.business;
+package fr.mla.mower2.business;
 
 import fr.mla.mower2.core.util.exception.ConfigurationException;
 

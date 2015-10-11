@@ -1,6 +1,6 @@
 package fr.mla.mower2.web.controller;
 
-import fr.mla.mower2.core.business.MowerBusiness;
+import fr.mla.mower2.business.MowerBusiness;
 import fr.mla.mower2.core.util.exception.ConfigurationException;
 import fr.mla.mower2.web.controller.dto.MowItNowInstructionsDto;
 import fr.mla.mower2.web.controller.dto.MowItNowResponseDto;
