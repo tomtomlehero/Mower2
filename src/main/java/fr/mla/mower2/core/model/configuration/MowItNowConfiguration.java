@@ -1,17 +1,30 @@
 package fr.mla.mower2.core.model.configuration;
 
-import java.util.ArrayList;
-import java.util.List;
+import fr.mla.mower2.core.util.InstructionEnum;
+
+import java.util.*;
 
 public class MowItNowConfiguration {
 
     private int maxX;
     private int maxY;
 
-    List<MowerConfiguration> mowerConfigurations = new ArrayList<>();
+    Deque<MowerConfiguration> mowerConfigurations = new ArrayDeque<>();
 
-    public MowItNowConfiguration(int maxX, int maxY) {
+
+    public int getMaxX() {
+        return maxX;
+    }
+
+    public void setMaxX(int maxX) {
         this.maxX = maxX;
+    }
+
+    public int getMaxY() {
+        return maxY;
+    }
+
+    public void setMaxY(int maxY) {
         this.maxY = maxY;
     }
 
@@ -19,21 +32,18 @@ public class MowItNowConfiguration {
         mowerConfigurations.add(mowerConfiguration);
     }
 
-    public int getMaxX() {
-        return maxX;
-    }
-
-    public int getMaxY() {
-        return maxY;
-    }
-
-    public List<MowerConfiguration> getMowerConfigurations() {
+    public Deque<MowerConfiguration> getMowerConfigurations() {
         return mowerConfigurations;
+    }
+
+
+    public void addInstructionToCurrentMower(InstructionEnum instruction) {
+        mowerConfigurations.getLast().pushInstruction(instruction);
     }
 
     @Override
     public String toString() {
-        return "MowLawnConfiguration{" +
+        return "MowItNowConfiguration{" +
                 "maxX=" + maxX +
                 ", maxY=" + maxY +
                 ", mowerConfigurations=" + mowerConfigurations +
