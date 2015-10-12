@@ -7,7 +7,7 @@ public abstract class Command {
 
     protected Mower mower;
 
-    abstract public void execute();
+    public abstract void execute();
 
     public void setMower(Mower mower) {
         this.mower = mower;
