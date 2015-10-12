@@ -8,8 +8,10 @@ import org.springframework.stereotype.Component;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.util.Arrays;
+
 @Component
-@Test (enabled=false)
+@Test (enabled=true)
 public class NothingTest {
 
     ConfigurationService configurationService;
@@ -22,10 +24,11 @@ public class NothingTest {
 
     public void mgniah() throws Exception {
 
-        MowItNowConfiguration mowItNowConfiguration = configurationService.configure(new String[]{
-                "1 2",
-                "0 0 N",
-                "AAADAAA"});
+        MowItNowConfiguration mowItNowConfiguration = configurationService.configure(
+                Arrays.asList(
+                        "1 2",
+                        "0 0 N",
+                        "AAADAAA"));
     }
 
 

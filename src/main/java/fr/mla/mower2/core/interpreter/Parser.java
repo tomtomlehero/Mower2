@@ -11,16 +11,16 @@ public class Parser {
 
     private List<Expression> expressions = new ArrayList<>();
 
-    public Parser(String lines[]) {
+    public Parser(List<String> lines) {
 
-        for (int i = 0; i < lines.length; i++) {
+        for (int i = 0; i < lines.size(); i++) {
 
             if (i == 0) {
-                expressions.add(new GardenInitializationExpression(lines[i]));
+                expressions.add(new GardenInitializationExpression(lines.get(i)));
             } else if ((i % 2) == 1) {
-                expressions.add(new MowerInitialPositionExpression(lines[i], (i / 2) + 1));
+                expressions.add(new MowerInitialPositionExpression(lines.get(i), (i / 2) + 1));
             } else if ((i % 2) == 0) {
-                expressions.add(new MowerInstructionsExpression(lines[i], i / 2));
+                expressions.add(new MowerInstructionsExpression(lines.get(i), i / 2));
             }
 
         }

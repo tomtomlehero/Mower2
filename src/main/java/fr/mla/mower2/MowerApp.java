@@ -1,6 +1,7 @@
 package fr.mla.mower2;
 
 import fr.mla.mower2.business.MowerBusiness;
+import fr.mla.mower2.core.util.FileUtil;
 import fr.mla.mower2.core.util.exception.ConfigurationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,11 +10,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -54,31 +52,10 @@ public class MowerApp {
 
 
     private List <String> mowItNow(String filePath) throws ConfigurationException, IOException {
-        String[] instructions = instructionsFromFile(filePath);
+        List<String> instructions = FileUtil.instructionsFromFile(filePath);
         return mowerBusiness.mowItNow(instructions);
     }
 
-    private String[] instructionsFromFile(String filePath) throws IOException {
-
-        try (BufferedReader in = new BufferedReader(new FileReader(filePath))) {
-
-            String line;
-            List<String> lines = new ArrayList<>();
-
-            while ((line = in.readLine()) != null) {
-                lines.add(line);
-            }
-
-            String result[] = new String[lines.size()];
-
-            int i = 0;
-            for (String line2 : lines) {
-                result[i++] = line2;
-            }
-
-            return result;
-        }
-    }
 
 
     private static void usage() {
