@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -32,17 +32,8 @@ public class MowerWebController {
         MowItNowResponseDto response = new MowItNowResponseDto();
         try {
 
-            String x[] = instructions.getInstructions().split(LINE_SEPARATOR);
-            List<String> y = new ArrayList<>();
-
-            for (String z : x) {
-                y.add(z);
-            }
-
-            List<String> mowItResponse = mowerBusiness.mowItNow(y);
-
-//            List<String> mowItResponse = mowerBusiness.mowItNow(
-//                    Arrays.asList(instructions.getInstructions().split(LINE_SEPARATOR)));
+            List<String> mowItResponse = mowerBusiness.mowItNow(
+                    Arrays.asList(instructions.getInstructions().split(LINE_SEPARATOR)));
             response.serialize(mowItResponse);
         } catch (ConfigurationException e) {
             response.setErrorMessage(e.getMessage());

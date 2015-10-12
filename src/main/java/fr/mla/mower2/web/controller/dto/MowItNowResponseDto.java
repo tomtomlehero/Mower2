@@ -21,6 +21,18 @@ public class MowItNowResponseDto implements Serializable {
         }
     }
 
+    public List<MowerResponseDto> getResponse() {
+        return response;
+    }
+
+    public void setResponse(List<MowerResponseDto> response) {
+        this.response = response;
+    }
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
     public void setErrorMessage(String errorMessage) {
         this.errorMessage = errorMessage;
     }
@@ -42,6 +54,22 @@ class MowerResponseDto implements Serializable {
 
     public MowerResponseDto(int id, String response) {
         this.id = id;
+        this.response = response;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getResponse() {
+        return response;
+    }
+
+    public void setResponse(String response) {
         this.response = response;
     }
 
