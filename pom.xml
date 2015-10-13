@@ -17,7 +17,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <start-class-app>fr.mla.mower2.MowerApp</start-class-app>
+        <start-class-standalone>fr.mla.mower2.MowerApp</start-class-standalone>
         <start-class-server>fr.mla.mower2.MowerServer</start-class-server>
     </properties>
 
@@ -83,7 +83,7 @@
         <profile>
             <id>app</id>
             <properties>
-                <start-class>${start-class-app}</start-class>
+                <start-class>${start-class-standalone}</start-class>
             </properties>
         </profile>
 
