@@ -81,7 +81,7 @@
     <profiles>
 
         <profile>
-            <id>app</id>
+            <id>standalone</id>
             <properties>
                 <start-class>${start-class-standalone}</start-class>
             </properties>
